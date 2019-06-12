@@ -562,6 +562,7 @@ class NovaPoshtaApi2
     {
         // Get cities by name
         $cities = $this->getCities(0, $cityName);
+        $data = 0;
         if (is_array($cities['data'])) {
             // If cities more then one, calculate current by area name
             $data = (count($cities['data']) > 1)
@@ -569,6 +570,7 @@ class NovaPoshtaApi2
                 : $cities['data'][0];
         }
         // Error
+        $error = NULL;
         (!$data) and $error = 'City was not found';
         // Return data in same format like NovaPoshta API
         return $this->prepare(
